@@ -1,0 +1,50 @@
+spring:
+  freemarker:
+    request-context-attribute: request
+    templateLoaderPath: classpath:/template/
+    suffix: .html
+  application:
+    name: dynamic-demo
+  datasource:
+    url: jdbc:mysql://localhost:3306/activity?autoCommit=false&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 1q2w3e4r
+    driverClassName: com.mysql.jdbc.Driver
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,slf4j
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=3000
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+        use_sql_comments: false
+
+  profiles:
+    active: dev
+server:
+  port: 9003
+
+logging:
+  level:
+    com.sirius: debug
+    root: info
+
+
+
+
